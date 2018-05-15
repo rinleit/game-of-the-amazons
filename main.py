@@ -72,12 +72,11 @@ def play(student_a, student_b, start_state=Initial_Board):
 
     a = player_a.Player('w')
     b = player_b.Player('b')
-    
+
     curr_player = a
-    state = start_state    
+    state = start_state
 
     board_num = 0
-        
     board_print(state)
     
     while True:
