@@ -93,7 +93,7 @@ def play(student_a, student_b, start_state=Initial_Board):
 
         print("The move is : ", move, end=" ")
         print(" (in %.2f ms)" % (elapse*1000), end=" ")
-        if elapse > 10.0:
+        if elapse > 3.0:
             print(" ** took more than three second!!", end=" ")
             break
         print()
@@ -114,4 +114,4 @@ def play(student_a, student_b, start_state=Initial_Board):
     else:
         print("The Winner is:", student_a, 'white')
 
-play("amazons", "amazons1")
+play("1413235", "1413235")
