@@ -11,6 +11,7 @@ from math import log, sqrt
 WHITE = 'w'
 BLACK = 'b'
 XXXXX = 'X'
+TRAINTIME = 1.5
 
 class Player:
     
@@ -39,7 +40,7 @@ class Player:
             starttime = time.time()
             bqs, wqs, xqs = self.find(state)
             CopyBoard = Board(10, wqs, bqs, xqs, self.str)
-            trainer = Boss(10, self.str, board=CopyBoard, starttime=starttime)
+            trainer = Boss(100, self.str, board=CopyBoard, starttime=starttime)
             result = self.play_bot(CopyBoard, trainer)
             del CopyBoard, trainer
             return result
@@ -238,7 +239,7 @@ class Boss:
         def other(self):
             return self.other_player
 
-    def __init__(self, training_iterations=0, iswhite='WHITE', board=None, starttime=0):
+    def __init__(self, training_iterations=0, iswhite=WHITE, board=None, starttime=0):
 
         self.start = aiboard_Board(board.config)
         self.starttime = starttime
@@ -254,10 +255,11 @@ class Boss:
 
     def train(self, iterations):
         while iterations > 0:
-            if time.time() - self.starttime < 1.5:
+            if time.time() - self.starttime < TRAINTIME:
                 self.simulate()
                 iterations -= 1
             else:
+                print("Times : %s" % iterations)
                 break
                 
     def select(self, current_state, player):
