@@ -252,8 +252,11 @@ class Boss:
         self.train()
 
     def train(self):
+        times = 0
         while time.time() - self.starttime < TRAINTIME:
             self.simulate()
+            times += 1
+        # print("Times %d" % times)
                 
     def select(self, current_state, player):
 
