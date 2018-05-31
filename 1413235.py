@@ -40,7 +40,7 @@ class Player:
             starttime = time.time()
             bqs, wqs, xqs = self.find(state)
             CopyBoard = Board(10, wqs, bqs, xqs, self.str)
-            trainer = Boss(100, self.str, board=CopyBoard, starttime=starttime)
+            trainer = Boss(self.str, board=CopyBoard, starttime=starttime)
             result = self.play_bot(CopyBoard, trainer)
             del CopyBoard, trainer
             return result
@@ -239,7 +239,7 @@ class Boss:
         def other(self):
             return self.other_player
 
-    def __init__(self, training_iterations=0, iswhite=WHITE, board=None, starttime=0):
+    def __init__(self, iswhite=WHITE, board=None, starttime=0):
 
         self.start = aiboard_Board(board.config)
         self.starttime = starttime
@@ -249,18 +249,11 @@ class Boss:
         self.black_player.other_player = self.white_player
 
         self.explored = dict()
+        self.train()
 
-        if training_iterations > 0:
-            self.train(training_iterations)
-
-    def train(self, iterations):
-        while iterations > 0:
-            if time.time() - self.starttime < TRAINTIME:
-                self.simulate()
-                iterations -= 1
-            else:
-                print("Times : %s" % iterations)
-                break
+    def train(self):
+        while time.time() - self.starttime < TRAINTIME:
+            self.simulate()
                 
     def select(self, current_state, player):
 
