@@ -11,7 +11,7 @@ from math import log, sqrt
 WHITE = 'w'
 BLACK = 'b'
 XXXXX = 'X'
-TRAINTIME = 1.5
+TRAINTIME = 1.0
 
 class Player:
     
