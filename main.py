@@ -114,4 +114,4 @@ def play(student_a, student_b, start_state=Initial_Board):
     else:
         print("The Winner is:", student_a, 'white')
 
-play("1413235", "1413235")
+play("amazon", "amazon")
