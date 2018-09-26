@@ -25,4 +25,4 @@ Python 3 or later
 $ python main.py
 ```
 ### Detail ###
-![The game of amazons](https://en.wikipedia.org/wiki/Game_of_the_Amazons)
+[The game of amazons](https://en.wikipedia.org/wiki/Game_of_the_Amazons)
